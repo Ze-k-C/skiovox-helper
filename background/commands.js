@@ -1,6 +1,7 @@
 const VIEW_SOURCE_PREFIX = "view-source:"
 const HISTORY_URL = "chrome://history"
 const DOWNLOADS_URL = "chrome://downloads"
+const FILES_URL = "chrome://file-manager
 
 function getRecentWindow() {
   return new Promise(resolve => {
@@ -55,6 +56,11 @@ async function onCommand(name, currentTab) {
       case "ACCESS_HISTORY":
         openTab(HISTORY_URL);
         break;
+        
+        case "ACCESS_FILES":
+        openTab(FILES_URL);
+        break;
+
 
       case "ACCESS_DOWNLOADS":
         openTab(DOWNLOADS_URL);
@@ -77,6 +83,7 @@ async function onCommand(name, currentTab) {
         })
         break;
 
+     
       case "RESTORE_TAB":
         // Because this window is "fake", restoring doesn't work 2a
         // Causes error: "There are no browser windows to restore the session."
